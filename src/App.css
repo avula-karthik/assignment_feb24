@@ -1,7 +1,50 @@
 .App {
   text-align: center;
+  background: linear-gradient(62deg, #8BC6EC, #9599E2);
 }
+form{
+  margin-top: 2px;
+}
+table{
+  margin: auto;
+}
+.text-danger{
+  color: red;
+}
+button{
+  background-color: #FBAB7E;
+  font-size: 30px;
+  border-radius: 10px;
+}
+input{
+  font-size: 28px;
+  border-radius: 5px;
+}
+.divHeading{
+  height: 20%;
+  width: 91% ;
+  margin: auto;
+  margin-bottom: 1%;
+}
+.heading3text{
+  font-size: 30px;
+  font-style: italic;
+}
+table tr{
+  border: 1px solid green;
 
+}
+table tr th{
+  border: 2px solid black;
+  height: 20px;
+  padding: 15px;
+  background-color: #FBAB7E;
+}
+table tr td{
+  border: 1px solid green;
+  padding: 15px;
+  background-color: #F7CE68;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
