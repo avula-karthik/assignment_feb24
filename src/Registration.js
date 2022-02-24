@@ -1,5 +1,7 @@
 import { useFormik, Field, Form } from "formik";
+
 const Registration = () => {
+   
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -8,23 +10,39 @@ const Registration = () => {
             fullname: "",
         },
         onSubmit(values) {
+            let usersArray = []
+            if(localStorage.getItem("Users")){
+                usersArray = JSON.parse(localStorage.getItem("Users"))
+            
             let userObj = {
                 name: formik.values.fullname,
                 email: formik.values.email,
                 age: formik.values.age,
                 password: formik.values.password,
             }
-            let myJSONString = JSON.stringify(userObj);
-            localStorage.setItem(formik.values.fullname, myJSONString);
+            usersArray.push(userObj)
+            let myJSONString = JSON.stringify(usersArray);
+            localStorage.setItem("Users", myJSONString);
+            }
+            else{
+                let userObj = {
+                    name: formik.values.fullname,
+                    email: formik.values.email,
+                    age: formik.values.age,
+                    password: formik.values.password,
+                }
+                usersArray.push(userObj);
+                localStorage.setItem("Users", JSON.stringify(usersArray))
+            }
 
         },
         validate() {
             const errors = {};
             if (formik.values.password.length < 4 || formik.values.password.length > 20) {
-                errors.password = "Password Count Range : 4-20";
+                errors.password = "Password char Count Range : 4-20";
             }
             if (formik.values.email.length < 5 || formik.values.email.length >= 30) {
-                errors.email = "Email count Range : 5-30 ";
+                errors.email = "Email char count Range : 5-30 ";
             }
             if (formik.values.age < 18 || formik.values.age > 120) {
                 errors.age = "Age should be 18-120";
